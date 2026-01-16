@@ -1,0 +1,34 @@
+# Minimal EOS Designs-style fabric intent for use with PyAVD or AVD.
+# This YAML mirrors the design_intent used in pyavd_hello_world.py.
+#
+# Typical usage pattern:
+# - Load this YAML in Python
+# - Pass the resulting dict to pyavd.validate_inputs / get_avd_facts / get_device_structured_config
+#
+# NOTE: This is a simplified example intended for learning and testing, not
+# a production-ready design.
+
+fabric_name: EXAMPLE_FABRIC
+
+spine:
+  defaults:
+    platform: vEOS-lab
+    bgp_as: 65000
+  nodes:
+    - name: spine1
+      id: 1
+      mgmt_ip: 192.168.0.10/24
+
+l3leaf:
+  defaults:
+    platform: vEOS-lab
+    loopback_ipv4_pool: 10.255.0.0/27
+    vtep_loopback_ipv4_pool: 10.255.1.0/27
+  node_groups:
+    - group: LEAF1
+      bgp_as: 65001
+      nodes:
+        - name: leaf1
+          id: 1
+          mgmt_ip: 192.168.0.11/24
+
