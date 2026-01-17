@@ -1,0 +1,49 @@
+{
+  "skills": [
+    {
+      "id": "generate_avd_data",
+      "name": "PyAVD Network Configuration Builder",
+      "version": "1.0.0",
+      "description": "Generate valid Arista EOS network configurations using PyAVD's data models and schemas",
+      "file": "generate_avd_data.md",
+      "category": "network-automation",
+      "domain": "Arista Networks - Data Center & Campus Networking",
+      "complexity": "advanced",
+      "prerequisites": [
+        "Python 3.10+",
+        "PyAVD 5.0.0+",
+        "Basic networking knowledge"
+      ],
+      "capabilities": [
+        "Intent-based network design",
+        "Device-specific configuration generation",
+        "Data model validation",
+        "Multi-schema architecture support",
+        "450+ schema fragments coverage"
+      ],
+      "use_cases": [
+        "Automated network provisioning",
+        "Configuration generation from templates",
+        "Network design validation",
+        "Multi-vendor network translation",
+        "Configuration-as-Code workflows"
+      ],
+      "keywords": [
+        "arista",
+        "avd",
+        "pyavd",
+        "eos",
+        "eos-designs",
+        "network-automation",
+        "data-center",
+        "configuration-generation"
+      ],
+      "examples": [
+        "../examples/eos_designs_minimal_fabric.yml",
+        "../examples/pyavd_hello_world.py"
+      ],
+      "last_updated": "2026-01-17"
+    }
+  ],
+  "schema_version": "1.0"
+}

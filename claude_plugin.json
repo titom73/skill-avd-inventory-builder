@@ -1,0 +1,66 @@
+{
+  "name": "generate_avd_data",
+  "version": "1.0.0",
+  "description": "AI skill for generating Arista AVD network configurations using PyAVD schemas and data models",
+  "author": "Inetsix",
+  "type": "skill",
+  "license": "Proprietary",
+  "keywords": [
+    "arista",
+    "avd",
+    "pyavd",
+    "network-automation",
+    "eos",
+    "data-center",
+    "configuration-generation"
+  ],
+  "requirements": {
+    "python": ">=3.10",
+    "packages": [
+      "pyavd>=5.0.0"
+    ]
+  },
+  "skills": [
+    {
+      "name": "generate_avd_data",
+      "title": "PyAVD Network Configuration Builder",
+      "description": "Generate valid Arista EOS network configurations using PyAVD's data models and schemas",
+      "file": "docs/skills/generate_avd_data.md",
+      "category": "network-automation",
+      "tags": [
+        "arista",
+        "avd",
+        "network-design",
+        "configuration-generation",
+        "eos-designs"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "name": "minimal_fabric",
+      "description": "Minimal fabric example for eos_designs",
+      "file": "docs/examples/eos_designs_minimal_fabric.yml",
+      "type": "yaml"
+    },
+    {
+      "name": "hello_world",
+      "description": "Sample Python script demonstrating PyAVD workflow",
+      "file": "docs/examples/pyavd_hello_world.py",
+      "type": "python"
+    }
+  ],
+  "installation": {
+    "script": "install.sh",
+    "script_windows": "install.ps1"
+  },
+  "uninstallation": {
+    "script": "uninstall.sh",
+    "script_windows": "uninstall.ps1"
+  },
+  "homepage": "https://github.com/inetsix/skill-avd",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inetsix/skill-avd.git"
+  }
+}
