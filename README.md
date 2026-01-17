@@ -90,7 +90,7 @@ INSTALL_MODE=claude INSTALL_PYAVD=yes \
 Once installed, the skill is automatically available in your Claude environment. Reference it in your prompts:
 
 ```
-Using the generate_avd_data skill, create a 2-spine / 4-leaf fabric design 
+Using the generate_avd_data skill, create a 2-spine / 4-leaf fabric design
 for a data center with BGP underlay and VXLAN overlay.
 ```
 
@@ -110,7 +110,7 @@ For more detailed examples, see:
 
 ## Advanced Installation
 
-For manual installation, vendoring into your project, or use with other AI assistants (GitHub Copilot, Gemini), see [INSTALL.md](INSTALL.md).
+For manual installation, vendoring into your project, or use with other AI assistants (GitHub Copilot, Gemini), see [QUICK_INSTALL.md](QUICK_INSTALL.md).
 
 ## Uninstallation
 
