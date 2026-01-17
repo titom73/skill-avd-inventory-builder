@@ -58,9 +58,9 @@
     "script": "uninstall.sh",
     "script_windows": "uninstall.ps1"
   },
-  "homepage": "https://github.com/inetsix/skill-avd",
+  "homepage": "https://github.com/titom73/skill-avd-inventory-builder",
   "repository": {
     "type": "git",
-    "url": "https://github.com/inetsix/skill-avd.git"
+    "url": "https://github.com/titom73/skill-avd-inventory-builder.git"
   }
 }

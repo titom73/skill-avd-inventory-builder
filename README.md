@@ -16,7 +16,7 @@ This repository contains an AI skill plugin for generating Arista AVD (Arista Va
 
 ```bash
 # Clone the repository
-git clone https://github.com/inetsix/skill-avd.git
+git clone https://github.com/titom73/skill-avd-inventory-builder.git
 cd skill-avd
 
 # Install the plugin
@@ -35,10 +35,10 @@ For **GitHub Copilot** or **Claude Plugin**, you can install directly without cl
 
 ```bash
 # Download and run the installer - will prompt for choices
-curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 
 # Or using wget
-wget -qO- https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+wget -qO- https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 #### Automated Mode (No User Interaction)
@@ -47,14 +47,14 @@ wget -qO- https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remot
 ```bash
 # Fully automated installation
 INSTALL_MODE=copilot INSTALL_PYAVD=yes CREATE_COPILOT_INSTRUCTIONS=yes \
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 **For Claude Plugin:**
 ```bash
 # Fully automated installation
 INSTALL_MODE=claude INSTALL_PYAVD=yes \
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 **Environment Variables:**

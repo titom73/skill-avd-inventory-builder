@@ -6,17 +6,17 @@ set -euo pipefail
 #
 # Usage:
 #   Interactive mode:
-#     curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+#     curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 #
 #   Non-interactive mode for GitHub Copilot:
-#     curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash -s -- --copilot
+#     curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash -s -- --copilot
 #     or with environment variable:
-#     INSTALL_MODE=copilot curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+#     INSTALL_MODE=copilot curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 #
 #   Non-interactive mode for Claude Plugin:
-#     curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash -s -- --claude
+#     curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash -s -- --claude
 #     or with environment variable:
-#     INSTALL_MODE=claude curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+#     INSTALL_MODE=claude curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 #
 #   Skip PyAVD installation prompt:
 #     INSTALL_MODE=copilot INSTALL_PYAVD=no curl -fsSL ... | bash
@@ -36,7 +36,7 @@ NC='\033[0m' # No Color
 # Plugin information
 PLUGIN_NAME="generate_avd_data"
 PLUGIN_VERSION="1.0.0"
-REPO_URL="https://github.com/inetsix/skill-avd"
+REPO_URL="https://github.com/titom73/skill-avd-inventory-builder"
 REPO_BRANCH="main"
 
 # Parse command line arguments
@@ -66,21 +66,21 @@ Environment Variables:
 
 Examples:
   # Interactive mode
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 
   # Non-interactive for GitHub Copilot
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash -s -- --copilot
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash -s -- --copilot
 
   # Non-interactive with environment variables
-  INSTALL_MODE=copilot curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  INSTALL_MODE=copilot curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 
   # Fully automated Copilot installation
   INSTALL_MODE=copilot INSTALL_PYAVD=yes CREATE_COPILOT_INSTRUCTIONS=yes \
-    curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+    curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 
   # Fully automated Claude installation
   INSTALL_MODE=claude INSTALL_PYAVD=no \
-    curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+    curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 HELP
             exit 0
             ;;
@@ -192,7 +192,7 @@ echo "Downloading skill files from GitHub..."
 download_file() {
     local file_path="$1"
     local output_path="$2"
-    local url="https://raw.githubusercontent.com/inetsix/skill-avd/${REPO_BRANCH}/${file_path}"
+    local url="https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/${REPO_BRANCH}/${file_path}"
     
     if command -v curl &> /dev/null; then
         curl -fsSL "$url" -o "$output_path"

@@ -31,10 +31,10 @@ Install without cloning the repository - the script will guide you:
 
 ```bash
 # Using curl
-curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 
 # Using wget
-wget -qO- https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+wget -qO- https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 The script will:
@@ -52,20 +52,20 @@ The script will:
 For GitHub Copilot:
 ```bash
 INSTALL_MODE=copilot INSTALL_PYAVD=yes CREATE_COPILOT_INSTRUCTIONS=yes \
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 For Claude Plugin:
 
 ```bash
 INSTALL_MODE=claude INSTALL_PYAVD=yes \
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 ### Get Help
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash -s -- --help
+curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash -s -- --help
 ```
 
 ---
@@ -79,7 +79,7 @@ curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remo
 #### Interactive Mode
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 Choose installation mode when prompted:
@@ -93,20 +93,20 @@ Choose installation mode when prompted:
 
 ```bash
 # With command-line flag
-curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash -s -- --copilot
+curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash -s -- --copilot
 
 # With environment variable
-INSTALL_MODE=copilot curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+INSTALL_MODE=copilot curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 **For Claude Plugin:**
 
 ```bash
 # With command-line flag
-curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash -s -- --claude
+curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash -s -- --claude
 
 # With environment variable
-INSTALL_MODE=claude curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+INSTALL_MODE=claude curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 ### Local Installation (Git Clone)
@@ -117,7 +117,7 @@ INSTALL_MODE=claude curl -fsSL https://raw.githubusercontent.com/inetsix/skill-a
 
 ```bash
 # Clone the repository
-git clone https://github.com/inetsix/skill-avd.git
+git clone https://github.com/titom73/skill-avd-inventory-builder.git
 cd skill-avd
 
 # Run the installation script
@@ -215,7 +215,7 @@ Your AI assistant will automatically index these files.
 INSTALL_MODE=copilot \
 INSTALL_PYAVD=yes \
 CREATE_COPILOT_INSTRUCTIONS=yes \
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 #### Skip Optional Components
@@ -224,7 +224,7 @@ CREATE_COPILOT_INSTRUCTIONS=yes \
 INSTALL_MODE=copilot \
 INSTALL_PYAVD=no \
 CREATE_COPILOT_INSTRUCTIONS=no \
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 ### Claude Plugin
@@ -234,7 +234,7 @@ CREATE_COPILOT_INSTRUCTIONS=no \
 ```bash
 INSTALL_MODE=claude \
 INSTALL_PYAVD=yes \
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 #### Install without PyAVD
@@ -242,7 +242,7 @@ INSTALL_PYAVD=yes \
 ```bash
 INSTALL_MODE=claude \
 INSTALL_PYAVD=no \
-  curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+  curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 ---
@@ -376,7 +376,7 @@ jobs:
           INSTALL_MODE=copilot \
           INSTALL_PYAVD=yes \
           CREATE_COPILOT_INSTRUCTIONS=yes \
-          curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+          curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 
       - name: Verify installation
         run: |
@@ -394,7 +394,7 @@ install_avd_skill:
     - export INSTALL_MODE=copilot
     - export INSTALL_PYAVD=yes
     - export CREATE_COPILOT_INSTRUCTIONS=yes
-    - curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+    - curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
     - test -f docs/skills/generate_avd_data/docs/skills/generate_avd_data.md
     - python3 -c "import pyavd; print(f'PyAVD {pyavd.__version__} installed')"
   artifacts:
@@ -416,7 +416,7 @@ pipeline {
                     export INSTALL_MODE=copilot
                     export INSTALL_PYAVD=yes
                     export CREATE_COPILOT_INSTRUCTIONS=yes
-                    curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+                    curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
                 '''
             }
         }
@@ -453,7 +453,7 @@ steps:
     export INSTALL_MODE=copilot
     export INSTALL_PYAVD=yes
     export CREATE_COPILOT_INSTRUCTIONS=yes
-    curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+    curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
   displayName: 'Install AVD Skill'
 
 - script: |
@@ -479,7 +479,7 @@ jobs:
             INSTALL_MODE=copilot \
             INSTALL_PYAVD=yes \
             CREATE_COPILOT_INSTRUCTIONS=yes \
-            curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+            curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
       - run:
           name: Verify Installation
           command: |
@@ -520,7 +520,7 @@ RUN git init
 RUN INSTALL_MODE=copilot \
     INSTALL_PYAVD=yes \
     CREATE_COPILOT_INSTRUCTIONS=yes \
-    curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+    curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 
 # Verify installation
 RUN test -f docs/skills/generate_avd_data/docs/skills/generate_avd_data.md && \
@@ -555,14 +555,14 @@ install-skill-copilot:
 @INSTALL_MODE=copilot \
  INSTALL_PYAVD=yes \
  CREATE_COPILOT_INSTRUCTIONS=yes \
- curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+ curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 @echo "Skill installed successfully!"
 
 install-skill-claude:
 @echo "Installing AVD skill for Claude..."
 @INSTALL_MODE=claude \
  INSTALL_PYAVD=yes \
- curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+ curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 @echo "Skill installed successfully!"
 
 verify-skill:
@@ -600,7 +600,7 @@ make verify-skill
         INSTALL_MODE=copilot \
         INSTALL_PYAVD=yes \
         CREATE_COPILOT_INSTRUCTIONS=yes \
-        curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+        curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
       args:
         chdir: /tmp/network-project
         creates: /tmp/network-project/docs/skills/generate_avd_data
@@ -652,7 +652,7 @@ If you select GitHub Copilot mode but are not in a git repository:
 ```bash
 cd <your-project>
 git init  # If needed
-curl -fsSL https://raw.githubusercontent.com/inetsix/skill-avd/main/install-remote.sh | bash
+curl -fsSL https://raw.githubusercontent.com/titom73/skill-avd-inventory-builder/main/install-remote.sh | bash
 ```
 
 ### Script fails in CI/CD
@@ -763,7 +763,7 @@ By keeping the skills current and consistently formatted, you help AI assistants
 
 ## Additional Resources
 
-- **Repository**: https://github.com/inetsix/skill-avd
+- **Repository**: https://github.com/titom73/skill-avd-inventory-builder
 - **Skill Documentation**: [docs/skills/generate_avd_data.md](docs/skills/generate_avd_data.md)
 - **Examples**:
   - [eos_designs_minimal_fabric.yml](docs/examples/eos_designs_minimal_fabric.yml)
