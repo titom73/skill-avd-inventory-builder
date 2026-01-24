@@ -45,3 +45,7 @@ htmlcov/
 *.tmp
 *.bak
 *.log
+
+# Backup files
+*-old.sh
+*.backup

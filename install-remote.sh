@@ -223,7 +223,7 @@ download_file "docs/examples/pyavd_hello_world.py" "$TEMP_DIR/docs/examples/pyav
 
 echo "  - Downloading documentation..."
 download_file "README.md" "$TEMP_DIR/README.md"
-download_file "INSTALL.md" "$TEMP_DIR/INSTALL.md"
+download_file "QUICK_INSTALL.md" "$TEMP_DIR/QUICK_INSTALL.md"
 download_file "LICENSE" "$TEMP_DIR/LICENSE"
 
 echo -e "${GREEN}✓ Download completed${NC}"
@@ -238,7 +238,7 @@ mkdir -p "$INSTALL_DIR/docs/examples"
 echo "Installing skill files..."
 cp -f "$TEMP_DIR/claude_plugin.json" "$INSTALL_DIR/"
 cp -f "$TEMP_DIR/README.md" "$INSTALL_DIR/"
-cp -f "$TEMP_DIR/INSTALL.md" "$INSTALL_DIR/"
+cp -f "$TEMP_DIR/QUICK_INSTALL.md" "$INSTALL_DIR/"
 cp -f "$TEMP_DIR/LICENSE" "$INSTALL_DIR/"
 
 cp -f "$TEMP_DIR/docs/skills/generate_avd_data.md" "$INSTALL_DIR/docs/skills/"

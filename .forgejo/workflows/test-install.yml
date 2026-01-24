@@ -1,0 +1,235 @@
+name: Test Installation Scripts
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'install*.sh'
+      - 'install*.ps1'
+      - 'uninstall*.sh'
+      - 'uninstall*.ps1'
+      - '.forgejo/workflows/test-install.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'install*.sh'
+      - 'install*.ps1'
+      - 'uninstall*.sh'
+      - 'uninstall*.ps1'
+      - '.forgejo/workflows/test-install.yml'
+  workflow_dispatch:
+
+jobs:
+  test-local-install-copilot:
+    name: Test Local Install - GitHub Copilot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Create test git repository
+        run: |
+          mkdir -p /tmp/test-project
+          cd /tmp/test-project
+          git init
+          git config user.email "test@example.com"
+          git config user.name "Test User"
+          echo "# Test Project" > README.md
+          git add README.md
+          git commit -m "Initial commit"
+
+      - name: Test local installation for GitHub Copilot
+        working-directory: /tmp/test-project
+        run: |
+          INSTALL_MODE=copilot \
+          INSTALL_PYAVD=no \
+          CREATE_COPILOT_INSTRUCTIONS=yes \
+          bash $GITHUB_WORKSPACE/install.sh
+
+      - name: Verify installation
+        working-directory: /tmp/test-project
+        run: |
+          # Check that skill directory was created
+          test -d docs/skills/generate_avd_data
+          
+          # Check that required files exist
+          test -f docs/skills/generate_avd_data/claude_plugin.json
+          test -f docs/skills/generate_avd_data/README.md
+          test -f docs/skills/generate_avd_data/QUICK_INSTALL.md
+          test -f docs/skills/generate_avd_data/LICENSE
+          test -f docs/skills/generate_avd_data/docs/skills/generate_avd_data.md
+          test -f docs/skills/generate_avd_data/docs/skills/index.md
+          test -f docs/skills/generate_avd_data/docs/skills/metadata.json
+          test -f docs/skills/generate_avd_data/docs/examples/eos_designs_minimal_fabric.yml
+          test -f docs/skills/generate_avd_data/docs/examples/pyavd_hello_world.py
+          
+          # Check Copilot instructions were created
+          test -f .github/copilot-instructions.md
+          
+          echo "✓ All files verified"
+
+      - name: Test uninstallation for GitHub Copilot
+        working-directory: /tmp/test-project
+        run: |
+          bash $GITHUB_WORKSPACE/uninstall.sh --copilot --yes
+          
+          # Verify skill directory was removed
+          test ! -d docs/skills/generate_avd_data
+          
+          echo "✓ Uninstallation successful"
+
+  test-local-install-claude:
+    name: Test Local Install - Claude Plugin
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test local installation for Claude
+        run: |
+          export CLAUDE_PLUGINS_DIR=/tmp/claude-plugins
+          mkdir -p $CLAUDE_PLUGINS_DIR
+          
+          INSTALL_MODE=claude \
+          INSTALL_PYAVD=no \
+          bash install.sh
+
+      - name: Verify Claude installation
+        run: |
+          export CLAUDE_PLUGINS_DIR=/tmp/claude-plugins
+          
+          # Check that plugin directory was created
+          test -d $CLAUDE_PLUGINS_DIR/generate_avd_data
+          
+          # Check that required files exist
+          test -f $CLAUDE_PLUGINS_DIR/generate_avd_data/claude_plugin.json
+          test -f $CLAUDE_PLUGINS_DIR/generate_avd_data/README.md
+          test -f $CLAUDE_PLUGINS_DIR/generate_avd_data/docs/skills/generate_avd_data.md
+          
+          echo "✓ Claude installation verified"
+
+      - name: Test uninstallation for Claude
+        run: |
+          export CLAUDE_PLUGINS_DIR=/tmp/claude-plugins
+          bash uninstall.sh --claude --yes
+          
+          # Verify plugin directory was removed
+          test ! -d $CLAUDE_PLUGINS_DIR/generate_avd_data
+          
+          echo "✓ Claude uninstallation successful"
+
+  test-remote-install-copilot:
+    name: Test Remote Install - GitHub Copilot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Create test git repository
+        run: |
+          mkdir -p /tmp/test-remote-project
+          cd /tmp/test-remote-project
+          git init
+          git config user.email "test@example.com"
+          git config user.name "Test User"
+          echo "# Test Remote Project" > README.md
+          git add README.md
+          git commit -m "Initial commit"
+
+      - name: Test remote installation script
+        working-directory: /tmp/test-remote-project
+        run: |
+          INSTALL_MODE=copilot \
+          INSTALL_PYAVD=no \
+          CREATE_COPILOT_INSTRUCTIONS=yes \
+          bash $GITHUB_WORKSPACE/install-remote.sh
+
+      - name: Verify remote installation
+        working-directory: /tmp/test-remote-project
+        run: |
+          # Check that skill directory was created
+          test -d docs/skills/generate_avd_data
+          
+          # Check that required files exist
+          test -f docs/skills/generate_avd_data/claude_plugin.json
+          test -f docs/skills/generate_avd_data/README.md
+          test -f docs/skills/generate_avd_data/QUICK_INSTALL.md
+          test -f docs/skills/generate_avd_data/LICENSE
+          test -f docs/skills/generate_avd_data/docs/skills/generate_avd_data.md
+          
+          # Check Copilot instructions were created
+          test -f .github/copilot-instructions.md
+          
+          echo "✓ Remote installation verified"
+
+  test-remote-install-claude:
+    name: Test Remote Install - Claude Plugin
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test remote installation for Claude
+        run: |
+          export CLAUDE_PLUGINS_DIR=/tmp/claude-remote-plugins
+          mkdir -p $CLAUDE_PLUGINS_DIR
+          
+          INSTALL_MODE=claude \
+          INSTALL_PYAVD=no \
+          bash install-remote.sh
+
+      - name: Verify remote Claude installation
+        run: |
+          export CLAUDE_PLUGINS_DIR=/tmp/claude-remote-plugins
+          
+          # Check that plugin directory was created
+          test -d $CLAUDE_PLUGINS_DIR/generate_avd_data
+          
+          # Check required files
+          test -f $CLAUDE_PLUGINS_DIR/generate_avd_data/claude_plugin.json
+          test -f $CLAUDE_PLUGINS_DIR/generate_avd_data/README.md
+          test -f $CLAUDE_PLUGINS_DIR/generate_avd_data/QUICK_INSTALL.md
+          
+          echo "✓ Remote Claude installation verified"
+
+  test-script-syntax:
+    name: Test Script Syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Bash scripts syntax
+        run: |
+          bash -n install.sh
+          bash -n install-remote.sh
+          bash -n uninstall.sh
+          echo "✓ All Bash scripts are syntactically correct"
+
+      - name: Shellcheck (if available)
+        run: |
+          if command -v shellcheck &> /dev/null; then
+            shellcheck install.sh install-remote.sh uninstall.sh || true
+          else
+            echo "Shellcheck not available, skipping"
+          fi
