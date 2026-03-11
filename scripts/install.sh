@@ -88,7 +88,7 @@ if [ "$PLATFORM" == "claude" ]; then
     echo ""
     echo "=========== END COPY ==========="
     echo ""
-    
+
     # Try to copy to clipboard
     if command -v pbcopy &> /dev/null; then
         cat "$SOURCE_FILE" | pbcopy
@@ -105,21 +105,38 @@ elif [ "$PLATFORM" == "copilot" ]; then
         echo -e "${RED}Error: target_path is required for copilot installation${NC}"
         usage
     fi
-    
+
     if [ ! -d "$TARGET_PATH" ]; then
         echo -e "${RED}Error: Target path '$TARGET_PATH' does not exist${NC}"
         exit 1
     fi
-    
+
     # Create .github directory if needed
     GITHUB_DIR="$TARGET_PATH/.github"
     mkdir -p "$GITHUB_DIR"
-    
-    TARGET_FILE="$GITHUB_DIR/copilot-instructions.md"
-    
+
     echo -e "${YELLOW}Installing for GitHub Copilot...${NC}"
-    cp "$SOURCE_FILE" "$TARGET_FILE"
-    echo -e "${GREEN}✓ Installed to $TARGET_FILE${NC}"
+
+    if [ "$TYPE" == "skill" ]; then
+        # Skills go to .github/copilot-instructions.md
+        TARGET_FILE="$GITHUB_DIR/copilot-instructions.md"
+        cp "$SOURCE_FILE" "$TARGET_FILE"
+        echo -e "${GREEN}✓ Installed to $TARGET_FILE${NC}"
+    else
+        # Agents go to .github/agents/<name>.md AND AGENTS.md at root
+        AGENTS_DIR="$GITHUB_DIR/agents"
+        mkdir -p "$AGENTS_DIR"
+
+        # Install to .github/agents/<name>.md
+        AGENT_FILE="$AGENTS_DIR/${NAME}.md"
+        cp "$SOURCE_FILE" "$AGENT_FILE"
+        echo -e "${GREEN}✓ Installed to $AGENT_FILE${NC}"
+
+        # Also install to AGENTS.md at root
+        ROOT_AGENTS_FILE="$TARGET_PATH/AGENTS.md"
+        cp "$SOURCE_FILE" "$ROOT_AGENTS_FILE"
+        echo -e "${GREEN}✓ Installed to $ROOT_AGENTS_FILE${NC}"
+    fi
 fi
 
 echo ""

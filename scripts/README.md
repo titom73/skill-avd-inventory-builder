@@ -105,6 +105,15 @@ Local installer for when you have cloned the repository.
 
 ### GitHub Copilot
 
+**For Skills:**
+
 1. Creates the `.github/` folder if needed
 2. Copies the file to `.github/copilot-instructions.md`
-3. The skill/agent is active for the entire repo
+3. The skill is active for the entire repo
+
+**For Agents:**
+
+1. Creates the `.github/agents/` folder if needed
+2. Copies the file to `.github/agents/<name>.md`
+3. Also copies to `AGENTS.md` at the repo root (GitHub standard)
+4. The agent is available for Copilot's agentic features

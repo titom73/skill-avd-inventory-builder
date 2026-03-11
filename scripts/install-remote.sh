@@ -144,11 +144,28 @@ elif [ "$PLATFORM" == "copilot" ]; then
     GITHUB_DIR="$TARGET_PATH/.github"
     mkdir -p "$GITHUB_DIR"
 
-    TARGET_FILE="$GITHUB_DIR/copilot-instructions.md"
-
     echo -e "${YELLOW}Installing for GitHub Copilot...${NC}"
-    echo "$CONTENT" > "$TARGET_FILE"
-    echo -e "${GREEN}✓ Installed to $TARGET_FILE${NC}"
+
+    if [ "$TYPE" == "skill" ]; then
+        # Skills go to .github/copilot-instructions.md
+        TARGET_FILE="$GITHUB_DIR/copilot-instructions.md"
+        echo "$CONTENT" > "$TARGET_FILE"
+        echo -e "${GREEN}✓ Installed to $TARGET_FILE${NC}"
+    else
+        # Agents go to .github/agents/<name>.md AND AGENTS.md at root
+        AGENTS_DIR="$GITHUB_DIR/agents"
+        mkdir -p "$AGENTS_DIR"
+
+        # Install to .github/agents/<name>.md
+        AGENT_FILE="$AGENTS_DIR/${NAME}.md"
+        echo "$CONTENT" > "$AGENT_FILE"
+        echo -e "${GREEN}✓ Installed to $AGENT_FILE${NC}"
+
+        # Also install to AGENTS.md at root
+        ROOT_AGENTS_FILE="$TARGET_PATH/AGENTS.md"
+        echo "$CONTENT" > "$ROOT_AGENTS_FILE"
+        echo -e "${GREEN}✓ Installed to $ROOT_AGENTS_FILE${NC}"
+    fi
 fi
 
 echo ""
