@@ -6,27 +6,27 @@ Install skills and agents directly from the internet with a single command:
 
 ```bash
 # One-liner installation (no git clone needed!)
-curl -fsSL https://raw.githubusercontent.com/titom73/ai-skills-agent-arista/main/scripts/install-remote.sh | bash -s -- <platform> <type> <name> [target_path]
+curl -fsSL https://git.as73.inetsix.net/ai/arista-skills-agents/raw/branch/main/scripts/install-remote.sh | bash -s -- <platform> <type> <name> [target_path]
 ```
 
 ### Examples
 
 ```bash
 # Install EOS Fabric Design skill for Claude Code (copies to clipboard)
-curl -fsSL https://raw.githubusercontent.com/titom73/ai-skills-agent-arista/main/scripts/install-remote.sh | bash -s -- claude skill eos-fabric-design
+curl -fsSL https://git.as73.inetsix.net/ai/arista-skills-agents/raw/branch/main/scripts/install-remote.sh | bash -s -- claude skill eos-fabric-design
 
 # Install AVD skill for GitHub Copilot
-curl -fsSL https://raw.githubusercontent.com/titom73/ai-skills-agent-arista/main/scripts/install-remote.sh | bash -s -- copilot skill avd /path/to/my/repo
+curl -fsSL https://git.as73.inetsix.net/ai/arista-skills-agents/raw/branch/main/scripts/install-remote.sh | bash -s -- copilot skill avd /path/to/my/repo
 
 # Install Config Reviewer agent for Copilot
-curl -fsSL https://raw.githubusercontent.com/titom73/ai-skills-agent-arista/main/scripts/install-remote.sh | bash -s -- copilot agent config-reviewer /path/to/my/repo
+curl -fsSL https://git.as73.inetsix.net/ai/arista-skills-agents/raw/branch/main/scripts/install-remote.sh | bash -s -- copilot agent config-reviewer /path/to/my/repo
 ```
 
 ---
 
 ## install-remote.sh
 
-Remote installer that downloads and installs skills/agents directly from GitHub.
+Remote installer that downloads and installs skills/agents directly from the Git server.
 
 ### Usage
 

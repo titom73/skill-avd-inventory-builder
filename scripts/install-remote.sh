@@ -1,19 +1,16 @@
 #!/bin/bash
 # Remote install script for AI Skills & Agents
-# Downloads and installs skills/agents directly from GitHub without cloning
+# Downloads and installs skills/agents directly from Git without cloning
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/titom73/ai-skills-agent-arista/main/scripts/install-remote.sh | bash -s -- <platform> <type> <name> [target_path]
+#   curl -fsSL https://git.as73.inetsix.net/ai/arista-skills-agents/raw/branch/main/scripts/install-remote.sh | bash -s -- <platform> <type> <name> [target_path]
 #   # Or download and run locally:
 #   ./install-remote.sh <platform> <type> <name> [target_path]
 
 set -e
 
 # Configuration
-REPO_OWNER="titom73"
-REPO_NAME="ai-skills-agent-arista"
-BRANCH="main"
-BASE_URL="https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}"
+BASE_URL="https://git.as73.inetsix.net/ai/arista-skills-agents/raw/branch/main"
 
 # Colors
 RED='\033[0;31m'
